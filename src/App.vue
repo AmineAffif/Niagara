@@ -21,12 +21,22 @@ export default {
 
 
 <style>
+* {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
 
 .theme--light.v-application {
   background-color: #FAFAFA !important;
 }
 a {
   text-decoration: none;
+}
+a span {
+  text-transform: initial;
 }
 
 </style>

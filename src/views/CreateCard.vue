@@ -1,11 +1,16 @@
 <template>
   <div class="create_card">
-    <h1>Create a card</h1>
+    <Stepper />
+    <Footer />
   </div>
 </template>
 
 <script>
-export default {};
+import Stepper from "../components/Stepper.vue";
+import Footer from "../components/Footer.vue";
+export default {
+  components: { Stepper, Footer },
+};
 </script>
 
 <style>
