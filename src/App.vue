@@ -6,6 +6,8 @@
   </v-app>
 </template>
 
+
+
 <script>
 
 export default {
@@ -16,3 +18,15 @@ export default {
   }),
 };
 </script>
+
+
+<style>
+
+.theme--light.v-application {
+  background-color: #FAFAFA !important;
+}
+a {
+  text-decoration: none;
+}
+
+</style>
