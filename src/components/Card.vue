@@ -1,8 +1,8 @@
 <template>
   <div class="card">
-    <h1>{{ userCard.cardName }}</h1>
+    <h1>{{ filteredCard.cardName }}</h1>
     <div class="team_wrapper">
-      <div v-for="(teamName, index) in userCard.teamNames" :key="index">
+      <div v-for="(teamName, index) in filteredCard.teamNames" :key="index">
         <p v-if="teamName == 'Logistique'" style="background: #00B9DE" class="card_category team">{{ teamName }}</p>
         <p v-if="teamName == 'Production'" style="background: #FF878A" class="card_category team">{{ teamName }}</p>
         <p v-if="teamName == 'Qualité'" style="background: #5BE471" class="card_category team">{{ teamName }}</p>
@@ -16,7 +16,7 @@
 <script>
 export default {
   name: "Card",
-  props: ["userCard"],
+  props: ["filteredCard"],
 };
 </script>
 

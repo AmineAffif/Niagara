@@ -7,30 +7,39 @@
     </div>
     <div class="row filter_row">
       <div class="filter_wrapper">
-        <v-select :items="filters" label="Filtres" solo>
+        <v-select
+          :items="filters"
+          label="Filtres"
+          solo
+          @change="onChangeFilter($event)"
+        >
           <template slot="selection" slot-scope="{ item }">
             <span
               v-if="item.name == 'Logistique'"
               class="filter_item"
               :style="'background: ' + item.color"
+              :value="item.name"
               >{{ item.name }}</span
             >
             <span
               v-if="item.name == 'Production'"
               class="filter_item"
               :style="'background: ' + item.color"
+              :value="item.name"
               >{{ item.name }}</span
             >
             <span
               v-if="item.name == 'Qualité'"
               class="filter_item"
               :style="'background: ' + item.color"
+              :value="item.name"
               >{{ item.name }}</span
             >
             <span
               v-if="item.name == 'Maintenance'"
               class="filter_item"
               :style="'background: ' + item.color"
+              :value="item.name"
               >{{ item.name }}</span
             >
           </template>
@@ -40,24 +49,28 @@
               v-if="item.name == 'Logistique'"
               class="filter_item"
               :style="'background: ' + item.color"
+              :value="item.name"
               >{{ item.name }}</span
             >
             <span
               v-if="item.name == 'Production'"
               class="filter_item"
               :style="'background: ' + item.color"
+              :value="item.name"
               >{{ item.name }}</span
             >
             <span
               v-if="item.name == 'Qualité'"
               class="filter_item"
               :style="'background: ' + item.color"
+              :value="item.name"
               >{{ item.name }}</span
             >
             <span
               v-if="item.name == 'Maintenance'"
               class="filter_item"
               :style="'background: ' + item.color"
+              :value="item.name"
               >{{ item.name }}</span
             >
           </template>
@@ -71,18 +84,19 @@
         >
       </router-link>
     </div>
-    <div class="row card_list">
+    <!-- <div v-if="filteredCards" class="row card_list">
       <div v-for="(userCard, index) in getUserCards" :key="index">
         <Card v-bind:userCard="userCard" />
       </div>
-
-
-
-      
+    </div> -->
+    <div class="row card_list">
+      <div v-for="(filteredCard, index) in filteredCards" :key="index">
+        <Card v-bind:filteredCard="filteredCard" />
+        <!-- <h1> {{ filteredCard.cardName }} </h1> -->
+      </div>
     </div>
   </div>
 </template>
-
 
 <script>
 import Card from "../components/Card.vue";
@@ -94,7 +108,21 @@ export default {
       { name: "Qualité", color: "#5BE471" },
       { name: "Maintenance", color: "#FFA862" },
     ],
+    filteredCards: null,
   }),
+  methods: {
+    onChangeFilter(event, userCards = this.$store.state.userCards) {
+      this.filteredCards = [];
+
+      userCards.forEach((userCard) => {
+        userCard.teamNames.forEach((teamName) => {
+          if (teamName == event.name) {
+            this.filteredCards.push(userCard);
+          }
+        });
+      });
+    },
+  },
   computed: {
     userCards() {
       return this.$store.userCards;
@@ -164,6 +192,6 @@ export default {
   padding: 4px 19px;
   border-radius: 32px;
   color: #fff;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 </style>
