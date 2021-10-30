@@ -1,12 +1,30 @@
 <template>
   <div class="footer">
-    <router-link to="/createCard" custom>
-      <v-btn id="prev_btn" elevation="2" rounded>
+    
+    <!-- Step 1 -->
+    <router-link v-if="currentStep == 1" to="/" exact custom>
+      <v-btn id="prev_btn_home" elevation="2" rounded>
+        <v-icon id="left_arrow_icon">mdi-arrow-left</v-icon>Accueil</v-btn
+      >
+    </router-link>
+    <!-- Step 2 or more -->
+    <router-link v-if="currentStep > 1" to="" exact custom>
+      <v-btn
+        @click="$store.commit('prevStep')"
+        id="prev_btn"
+        elevation="2"
+        rounded
+      >
         <v-icon id="left_arrow_icon">mdi-arrow-left</v-icon>Précedent</v-btn
       >
     </router-link>
-    <router-link to="/" id="next_btn_a" class="enabled_next_btn" custom>
-      <v-btn id="next_btn" elevation="2" rounded
+
+    <router-link to="" id="next_btn_a" class="enabled_next_btn" custom>
+      <v-btn
+        @click="$store.commit('nextStep')"
+        id="next_btn"
+        elevation="2"
+        rounded
         >Suivant</v-btn
       >
     </router-link>
@@ -16,6 +34,17 @@
 <script>
 export default {
   name: "Footer",
+  data: () => ({
+    step: 1,
+  }),
+  mounted() {
+    this.step = this.$store.getters.getStep;
+  },
+  computed: {
+    currentStep() {
+      return this.$store.state.step;
+    },
+  },
 };
 </script>
 
@@ -49,6 +78,19 @@ export default {
   margin-right: 5px;
 }
 
+#prev_btn_home {
+  background: #fff;
+  border: #0083ff 1px solid;
+  transition: all 200ms ease-in-out;
+}
+#prev_btn_home:hover {
+  background: #0083ff;
+  color: #fff;
+}
+#prev_btn_home #left_arrow_icon {
+  margin-right: 5px;
+}
+
 #next_btn {
   color: #fff;
   background: #bdbdbd;
@@ -65,7 +107,4 @@ export default {
 .footer a.enabled_next_btn #next_btn {
   background: #0083ff;
 }
-
-
-
 </style>

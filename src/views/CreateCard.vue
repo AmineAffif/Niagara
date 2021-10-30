@@ -2,9 +2,9 @@
   <div class="create_card">
     <Stepper />
 
-    <CreateCardStep1 v-if="step == 1" />
-    <CreateCardStep2 v-if="step == 2" />
-    <CreateCardStep3 v-if="step == 3" />
+    <CreateCardStep1 v-if="currentStep == 1" />
+    <CreateCardStep2 v-if="currentStep == 2" />
+    <CreateCardStep3 v-if="currentStep == 3" />
 
     <Footer />
   </div>
@@ -23,6 +23,11 @@ export default {
   }),
   mounted(){
       this.step = this.$store.getters.getStep;
+  },
+  computed: {
+    currentStep() {
+      return this.$store.state.step;
+    },
   },
   components: {
     Stepper,

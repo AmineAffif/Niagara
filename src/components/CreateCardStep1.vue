@@ -80,7 +80,8 @@ export default {};
   padding: 10px;
   background-color: #fff;
   position: relative;
-  margin-right: 20px;
+  margin-right: 25px;
+  box-shadow: 0px 5px 0.75rem rgba(0, 0, 0, 0.1);
 }
 .radio_img p {
   font-size: 1.3rem;

@@ -1,7 +1,7 @@
 <template>
   <div class="stepper">
     <!-- Step 1 -->
-    <div v-if="step == 1" class="stepper_content">
+    <div v-if="currentStep == 1" class="stepper_content">
       <div class="step active_step">
         <p class="step_num">1</p>
         <p>Étape 1</p>
@@ -23,7 +23,7 @@
     </div>
 
     <!-- Step 2 -->
-    <div v-if="step == 2" class="stepper_content">
+    <div v-if="currentStep == 2" class="stepper_content">
       <div class="step active_step">
         <p class="step_num">1</p>
         <p>Étape 1</p>
@@ -45,7 +45,7 @@
     </div>
 
     <!-- Step 3 -->
-    <div v-if="step == 3" class="stepper_content">
+    <div v-if="currentStep == 3" class="stepper_content">
       <div class="step active_step">
         <p class="step_num">1</p>
         <p>Étape 1</p>
@@ -76,6 +76,11 @@ export default {
   }),
   mounted() {
     this.step = this.$store.getters.getStep;
+  },
+  computed: {
+    currentStep() {
+      return this.$store.state.step;
+    },
   },
 };
 </script>
