@@ -32,7 +32,10 @@
           </label>
         </div>
       </div>
+      
+      
     </div>
+    
 </template>
 
 <script>
@@ -40,6 +43,11 @@ export default {
   data: () => ({
     step: 1,
   }),
+  computed: {
+    currentStep() {
+      return this.$store.state.step;
+    },
+  },
 };
 </script>
 

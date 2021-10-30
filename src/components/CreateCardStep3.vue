@@ -1,7 +1,7 @@
 <template>
   <div class="create_card_content_wrapper">
     <div class="create_card_content">
-      <h1>Sélectionnez le format d'entrée</h1>
+      <h1>Sélectionnez le déclencheur</h1>
       <label for="" class="label_input"
         >Choisissez le type de déclencheur pour mettre à jour les données</label
       >
@@ -18,40 +18,32 @@
             solo
           >
             <template slot="selection" slot-scope="{ item }">
-              <v-icon v-if="item == 'Manuel'">mdi-plus</v-icon>
-              <div class="trigger_single">
-                {{ item == "Manuel" ? item : "" }}
+              <div v-if="item == 'Manuel'" class="trigger_single">
+                <v-icon>mdi-plus</v-icon>
+                {{ item }}
               </div>
-              <v-icon v-if="item == 'Action prédéfinie'"
-                >mdi-circle-multiple-outline</v-icon
-              >
-              <div class="trigger_single">
-                {{ item == "Action prédéfinie" ? item : "" }}
+              <div v-if="item == 'Action prédéfinie'" class="trigger_single">
+                <v-icon>mdi-circle-multiple-outline</v-icon>
+                {{ item }}
               </div>
-              <v-icon v-if="item == 'Calendaire'"
-                >mdi-calendar-blank-outline</v-icon
-              >
-              <div class="trigger_single">
-                {{ item == "Calendaire" ? item : "" }}
+              <div v-if="item == 'Calendaire'" class="trigger_single">
+                <v-icon>mdi-calendar-blank-outline</v-icon>
+                {{ item }}
               </div>
             </template>
 
             <template slot="item" slot-scope="{ item }">
-              <v-icon v-if="item == 'Manuel'">mdi-plus</v-icon>
-              <div class="trigger_single">
-                {{ item == "Manuel" ? item : "" }}
+              <div v-if="item == 'Manuel'" class="trigger_single">
+                <v-icon>mdi-plus</v-icon>
+                {{ item }}
               </div>
-              <v-icon v-if="item == 'Action prédéfinie'"
-                >mdi-circle-multiple-outline</v-icon
-              >
-              <div class="trigger_single">
-                {{ item == "Action prédéfinie" ? item : "" }}
+              <div v-if="item == 'Action prédéfinie'" class="trigger_single">
+                <v-icon>mdi-circle-multiple-outline</v-icon>
+                {{ item }}
               </div>
-              <v-icon v-if="item == 'Calendaire'"
-                >mdi-calendar-blank-outline</v-icon
-              >
-              <div class="trigger_single">
-                {{ item == "Calendaire" ? item : "" }}
+              <div v-if="item == 'Calendaire'" class="trigger_single">
+                <v-icon>mdi-calendar-blank-outline</v-icon>
+                {{ item }}
               </div>
             </template>
           </v-select>
@@ -109,10 +101,12 @@ export default {
 }
 
 .trigger_single {
-  margin-left: 5px;
-  margin-top: 1px;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+}
+.trigger_single i {
+  margin-right: 10px;
 }
 .row {
   margin: 0 !important;

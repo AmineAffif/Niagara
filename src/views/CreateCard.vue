@@ -11,6 +11,7 @@
       <CreateCardStep3 v-if="currentStep == 3" />
     </transition>
 
+
     <Footer />
   </div>
 </template>
@@ -26,9 +27,6 @@ export default {
   data: () => ({
     step: 1,
   }),
-  mounted() {
-    this.step = this.$store.getters.getStep;
-  },
   computed: {
     currentStep() {
       return this.$store.state.step;

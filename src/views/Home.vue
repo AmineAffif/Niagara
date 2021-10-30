@@ -7,7 +7,61 @@
     </div>
     <div class="row filter_row">
       <div class="filter_wrapper">
-        <v-select :items="filters" label="Filtres" solo />
+        <v-select :items="filters" label="Filtres" solo>
+          <template slot="selection" slot-scope="{ item }">
+            <span
+              v-if="item.name == 'Logistique'"
+              class="filter_item"
+              :style="'background: ' + item.color"
+              >{{ item.name }}</span
+            >
+            <span
+              v-if="item.name == 'Production'"
+              class="filter_item"
+              :style="'background: ' + item.color"
+              >{{ item.name }}</span
+            >
+            <span
+              v-if="item.name == 'Qualité'"
+              class="filter_item"
+              :style="'background: ' + item.color"
+              >{{ item.name }}</span
+            >
+            <span
+              v-if="item.name == 'Maintenance'"
+              class="filter_item"
+              :style="'background: ' + item.color"
+              >{{ item.name }}</span
+            >
+          </template>
+
+          <template slot="item" slot-scope="{ item }">
+            <span
+              v-if="item.name == 'Logistique'"
+              class="filter_item"
+              :style="'background: ' + item.color"
+              >{{ item.name }}</span
+            >
+            <span
+              v-if="item.name == 'Production'"
+              class="filter_item"
+              :style="'background: ' + item.color"
+              >{{ item.name }}</span
+            >
+            <span
+              v-if="item.name == 'Qualité'"
+              class="filter_item"
+              :style="'background: ' + item.color"
+              >{{ item.name }}</span
+            >
+            <span
+              v-if="item.name == 'Maintenance'"
+              class="filter_item"
+              :style="'background: ' + item.color"
+              >{{ item.name }}</span
+            >
+          </template>
+        </v-select>
       </div>
     </div>
     <div class="row add_card">
@@ -18,11 +72,13 @@
       </router-link>
     </div>
     <div class="row card_list">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <div v-for="(userCard, index) in getUserCards" :key="index">
+        <Card v-bind:userCard="userCard" />
+      </div>
+
+
+
+      
     </div>
   </div>
 </template>
@@ -32,8 +88,21 @@
 import Card from "../components/Card.vue";
 export default {
   data: () => ({
-    filters: ["Logistique", "Production", "Qualité", "Maintenance"],
+    filters: [
+      { name: "Logistique", color: "#00B9DE" },
+      { name: "Production", color: "#FF878A" },
+      { name: "Qualité", color: "#5BE471" },
+      { name: "Maintenance", color: "#FFA862" },
+    ],
   }),
+  computed: {
+    userCards() {
+      return this.$store.userCards;
+    },
+    getUserCards() {
+      return this.$store.state.userCards;
+    },
+  },
   components: { Card },
 };
 </script>
@@ -73,7 +142,7 @@ export default {
 }
 
 .filter_wrapper {
-  width: 150px;
+  width: 180px;
   margin-top: 26px;
 }
 
@@ -89,5 +158,12 @@ export default {
 .add_card {
   display: flex;
   justify-content: flex-end;
+}
+
+.filter_item {
+  padding: 4px 19px;
+  border-radius: 32px;
+  color: #fff;
+  font-size: .9rem;
 }
 </style>
