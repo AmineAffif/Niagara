@@ -1,35 +1,35 @@
 <template>
-  <div class="create_card_content_wrapper">
-    <div class="create_card_content">
-      <h1>Renseignez la carte</h1>
-      <UploadFileInput />
-      <div class="inputs_fields">
-        <label for="" class="label_input">Donnez un nom à votre carte</label>
-        <v-text-field
-          label="Nom"
-          name="aa"
-          class="text-field"
-          solo
-        ></v-text-field>
+    <div class="create_card_content_wrapper">
+      <div class="create_card_content">
+        <h1>Renseignez la carte</h1>
+        <UploadFileInput />
+        <div class="inputs_fields">
+          <label for="" class="label_input">Donnez un nom à votre carte</label>
+          <v-text-field
+            label="Nom"
+            name="aa"
+            class="text-field"
+            solo
+          ></v-text-field>
 
-        <label for="" class="label_input"
-          >Ajoutez des étiquettes d'équipe</label
-        >
-        <div class="row filter_row">
-          <div class="filter_wrapper">
-            <v-select
-              :items="filters"
-              chips
-              multiple
-              label="Filtres"
-              prepend-icon="mdi-account"
-              solo
-            />
+          <label for="" class="label_input"
+            >Ajoutez des étiquettes d'équipe</label
+          >
+          <div class="row filter_row">
+            <div class="filter_wrapper">
+              <v-select
+                :items="filters"
+                chips
+                multiple
+                label="Filtres"
+                prepend-icon="mdi-account"
+                solo
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </template>
   
 <script>

@@ -1,8 +1,8 @@
 <template>
-  <div class="create_card_content_wrapper">
-    <div class="create_card_content">
-      <h1>Sélectionnez le format d'entrée</h1>
-      <div class="radio_wrapper">
+    <div class="create_card_content_wrapper">
+      <div class="create_card_content">
+        <h1>Sélectionnez le format d'entrée</h1>
+        <div class="radio_wrapper">
           <label class="radio_img">
             <img
               src="../assets/folder_icon.webp"
@@ -30,13 +30,17 @@
             <input name="radio-group1" type="radio" value="api" />
             <p>API</p>
           </label>
+        </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    step: 1,
+  }),
+};
 </script>
 
 <style scoped>
@@ -50,6 +54,7 @@ export default {};
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 1s ease-in-out;
 }
 .create_card_content {
   display: flex;

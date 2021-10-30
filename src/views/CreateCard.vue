@@ -1,10 +1,15 @@
 <template>
   <div class="create_card">
     <Stepper />
-
-    <CreateCardStep1 v-if="currentStep == 1" />
-    <CreateCardStep2 v-if="currentStep == 2" />
-    <CreateCardStep3 v-if="currentStep == 3" />
+    <transition name="fade">
+      <CreateCardStep1 v-if="currentStep == 1" />
+    </transition>
+    <transition name="fade">
+      <CreateCardStep2 v-if="currentStep == 2" />
+    </transition>
+    <transition name="fade">
+      <CreateCardStep3 v-if="currentStep == 3" />
+    </transition>
 
     <Footer />
   </div>
@@ -21,8 +26,8 @@ export default {
   data: () => ({
     step: 1,
   }),
-  mounted(){
-      this.step = this.$store.getters.getStep;
+  mounted() {
+    this.step = this.$store.getters.getStep;
   },
   computed: {
     currentStep() {
@@ -40,12 +45,13 @@ export default {
 </script>
 
 <style>
-#aa {
-  display: flex;
-  width: 100%;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row !important;
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
