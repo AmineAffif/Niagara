@@ -22,6 +22,7 @@ export default {
     padding: 20px 40px;
     border-radius: 15px;
     filter: drop-shadow(0 0 0.75rem rgba(0,0,0,.03));
+    width: 100%;
   }
   .card h1 {
     font-size: 1.5rem;

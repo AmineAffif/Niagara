@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    step: 2,
+    step: 1,
   },
   getters: {
     getStep: state => state.step

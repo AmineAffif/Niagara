@@ -56,8 +56,7 @@ export default {};
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  width: 70%;
-  margin-top: 50px;
+  width: 60%;
 }
 .create_card_content img {
   width: 120px;

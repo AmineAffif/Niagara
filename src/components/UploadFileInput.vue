@@ -36,9 +36,7 @@ export default {
 </script>
 
 <style>
-.upload_file {
-  width: 40%;
-}
+
 #dropzone {
   border: 3px dashed rgba(0, 0, 0, 0.1);
   margin-bottom: 40px !important;

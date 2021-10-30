@@ -32,7 +32,7 @@
 import Card from "../components/Card.vue";
 export default {
   data: () => ({
-    filters: ["Logistique", "production", "Qualité", "Maintenance"],
+    filters: ["Logistique", "Production", "Qualité", "Maintenance"],
   }),
   components: { Card },
 };
@@ -51,6 +51,7 @@ export default {
 
 .row {
   width: 85%;
+  margin: 0;
 }
 
 .title_row h1 {
@@ -64,6 +65,11 @@ export default {
 
 .card_list {
   margin-top: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .filter_wrapper {
